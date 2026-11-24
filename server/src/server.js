@@ -21,7 +21,8 @@ const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 // Build allowed origins list (always include localhost for local dev)
 const ALLOWED_ORIGINS = [
   CLIENT_URL,
-  'https://client-tan-seven-31.vercel.app',  // production frontend
+  'https://salon-queue-management-112.vercel.app', // new production frontend
+  'https://client-tan-seven-31.vercel.app',        // previous production frontend
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ].filter(Boolean);
@@ -31,7 +32,10 @@ app.use(cors({
   origin: (origin, callback) => {
     // Allow requests with no origin (mobile apps, curl, Postman)
     if (!origin) return callback(null, true);
-    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    // Allow if in ALLOWED_ORIGINS or any vercel.app preview deploy
+    if (ALLOWED_ORIGINS.includes(origin) || origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
     callback(new Error(`CORS: Origin ${origin} not allowed`));
   },
   credentials: true,

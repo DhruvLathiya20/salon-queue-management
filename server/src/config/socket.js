@@ -9,7 +9,13 @@ export const initSocket = (server, allowedOrigins) => {
   const origins = Array.isArray(allowedOrigins) ? allowedOrigins : [allowedOrigins, 'http://localhost:5173'];
   const io = new Server(server, {
     cors: {
-      origin: origins,
+      origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (origins.includes(origin) || origin.endsWith('.vercel.app')) {
+          return callback(null, true);
+        }
+        callback(new Error(`Socket CORS: Origin ${origin} not allowed`));
+      },
       methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
       credentials: true,
     },
