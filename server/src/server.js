@@ -18,15 +18,27 @@ const server = http.createServer(app);
 const PORT = process.env.PORT || 5000;
 const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 
+// Build allowed origins list (always include localhost for local dev)
+const ALLOWED_ORIGINS = [
+  CLIENT_URL,
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+].filter(Boolean);
+
 // Middleware
 app.use(cors({
-  origin: [CLIENT_URL, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    callback(new Error(`CORS: Origin ${origin} not allowed`));
+  },
   credentials: true,
 }));
 app.use(express.json());
 
 // Initialize WebSockets
-const io = initSocket(server, CLIENT_URL);
+const io = initSocket(server, ALLOWED_ORIGINS);
 
 // Health & Info Endpoint
 app.get('/api/health', (req, res) => {

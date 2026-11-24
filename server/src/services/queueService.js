@@ -125,7 +125,7 @@ export const DEFAULT_SETTINGS = {
   openingTime: '09:00',
   closingTime: '21:00',
   onlineCutoffMinutes: 30,
-  adminPin: '1234',
+  adminPin: process.env.ADMIN_PIN || '1234',
 };
 
 // Resilient in-memory fallback store

@@ -5,10 +5,11 @@ let ioInstance = null;
 /**
  * Initialize Socket.IO with CORS settings and standard salon rooms.
  */
-export const initSocket = (server, clientUrl) => {
+export const initSocket = (server, allowedOrigins) => {
+  const origins = Array.isArray(allowedOrigins) ? allowedOrigins : [allowedOrigins, 'http://localhost:5173'];
   const io = new Server(server, {
     cors: {
-      origin: [clientUrl, 'http://localhost:5173', 'http://127.0.0.1:5173'],
+      origin: origins,
       methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
       credentials: true,
     },
