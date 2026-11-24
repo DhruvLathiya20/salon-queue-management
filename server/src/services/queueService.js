@@ -178,15 +178,21 @@ export const getBarbers = async () => {
   return memoryStore.barbers;
 };
 
-export const getSalonSettings = async () => {
+export const getSalonSettings = async ({ includeAdminPin = false } = {}) => {
+  let settings;
   if (isDbConnected()) {
-    let settings = await Settings.findOne().lean();
+    settings = await Settings.findOne().lean();
     if (!settings) {
       settings = await Settings.create(DEFAULT_SETTINGS);
     }
-    return settings;
+  } else {
+    settings = memoryStore.settings;
   }
-  return memoryStore.settings;
+  if (!includeAdminPin) {
+    const { adminPin: _removed, ...safeSettings } = settings;
+    return safeSettings;
+  }
+  return settings;
 };
 
 export const updateSalonSettings = async (updateData) => {

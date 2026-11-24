@@ -11,7 +11,7 @@ export const requireAdminAuth = async (req, res, next) => {
       req.headers['authorization']?.replace('Bearer ', '') ||
       req.query?.adminPin;
 
-    const settings = await getSalonSettings();
+    const settings = await getSalonSettings({ includeAdminPin: true });
     const validPin = settings.adminPin || '1234';
 
     if (!enteredPin || String(enteredPin).trim() !== String(validPin).trim()) {
