@@ -4,6 +4,8 @@
 
 **Hosted on:** Vercel (frontend) + Render (backend) 
 
+**Admin Pin:** 1234
+
 ## 📖 Project Description
 A full‑stack, real‑time queue management application for salons. Customers can join a live queue, select services and a preferred barber, and receive real‑time notifications when it’s their turn. Receptionists, barbers, and owners have dedicated interfaces to manage the queue, view analytics, and control salon settings.
 
