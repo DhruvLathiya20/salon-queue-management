@@ -60,15 +60,16 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Connect to Database and start Server
-connectDB().finally(() => {
-  server.listen(PORT, () => {
-    console.log(`====================================================`);
-    console.log(` Salon Queue Management Server running on port ${PORT}`);
-    console.log(` WebSocket ready for connections at ws://localhost:${PORT}`);
-    console.log(` Health check: http://localhost:${PORT}/api/health`);
-    console.log(`====================================================`);
-  });
+// Start HTTP & WebSocket Server immediately, then connect to MongoDB
+server.listen(PORT, () => {
+  console.log(`====================================================`);
+  console.log(` Salon Queue Management Server running on port ${PORT}`);
+  console.log(` WebSocket ready for connections at ws://localhost:${PORT}`);
+  console.log(` Health check: http://localhost:${PORT}/api/health`);
+  console.log(`====================================================`);
+  
+  // Connect to DB asynchronously
+  connectDB();
 });
 
 export { app, server, io };
