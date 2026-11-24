@@ -1,6 +1,7 @@
 # Salon Queue Management System
 
 **Live demo:** https://client-tan-seven-31.vercel.app/
+
 **Hosted on:** Vercel (frontend) + Render (backend) 
 
 ## 📖 Project Description
