@@ -338,3 +338,64 @@ https://salon-queue-management-1c2g.onrender.com
 
 ---
 
+### Prompt 14: Documentation of Prompts and Project Reflection
+```markdown
+prompts.md: every prompt you used, in order (including the ones that didn't work)
+
+Half-page reflection: one thing the agent got wrong, how you noticed it, and how you fixed
+your prompt or doc
+```
+*Result: Created initial `prompts.md` and `reflection.md` documenting history and the key lessons learned.*
+
+---
+
+### Prompt 15: Mobile View Navigation Missing
+```markdown
+in mobile view this is not showing this menu so fix it
+[Image attached showing desktop navigation bar with Home, Join Queue, Reception, TV Display, Admin]
+```
+*Result: Diagnosed that `Navbar.jsx` had navigation links hidden on mobile (`md:hidden`) with no mobile drawer. Added a responsive hamburger menu toggle button (`Menu`/`X` icon), an animated mobile navigation drawer with touch-friendly links, and auto-close on selection. Verified with `npm run build`, committed (`647e0ca`), and pushed to GitHub.*
+
+---
+
+### Prompt 16: Mobile Navbar Deployment Confirmation
+```markdown
+also deployee this changes
+```
+*Result: Verified that commit `647e0ca` was already pushed to `origin/main` on GitHub, triggering Vercel's automatic CI/CD deployment pipeline. Tested live deployment HTTP status (200 OK) on Vercel.*
+
+---
+
+### Prompt 17: New Vercel Domain & Backend Connection Setup
+```markdown
+https://salon-queue-management-112.vercel.app/
+
+this is my new fronted link so update accordingly in this link backend doen t work so fix it
+```
+*Result: Resolved CORS failure on Render backend. Updated `server/src/server.js` and `server/src/config/socket.js` to whitelist `https://salon-queue-management-112.vercel.app` and added wildcard support for `*.vercel.app` domains for both REST API and Socket.IO handshakes. Committed (`3d5c0c3`) and pushed to GitHub.*
+
+---
+
+### Prompt 18: Troubleshooting Backend Connectivity
+```markdown
+still does not work bakeend so fix
+```
+*Result: Ran live simulated tests against the Render backend (`https://salon-queue-management-1c2g.onrender.com`) using the `https://salon-queue-management-112.vercel.app` origin for `/api/v1/queue/live`, `/api/v1/services`, `/api/v1/barbers`, `/api/v1/queue/join`, and Socket.IO polling handshakes. Confirmed all returned 200/201 with proper CORS headers. Clarified that browser cache needed hard refresh (`Ctrl + F5`) and noted Render free-tier cold-start latency.*
+
+---
+
+### Prompt 19: Root URL Routing & Home Page Clarification
+```markdown
+by cliking first join queue page open change it to home page
+```
+*Result: Inspected `client/src/App.jsx`, `client/src/pages/HomePage.jsx`, and `client/src/components/common/Navbar.jsx`. Verified that root path `/` renders `<HomePage />` while `/join` renders `<JoinQueuePage />`. Clarified that browser history/autofill often appends `/join` if previously visited, and explained how clicking the brand logo or navigating directly to `/` loads the Home Page.*
+
+---
+
+### Prompt 20: Prompts Log Update
+```markdown
+updateb prompt.mp according to new prompts
+```
+*Result: Updated `prompts.md` to include all recent prompts (14 through 20) with prompt text, context, and resolution details.*
+
+
