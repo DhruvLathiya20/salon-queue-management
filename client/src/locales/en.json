@@ -1,7 +1,8 @@
 {
   "brand": {
     "name": "Elite Salon",
-    "tagline": "Smart Live Queue Management"
+    "tagline": "Smart Live Queue Management",
+    "hours": "Operating Hours: 09:00 AM – 09:00 PM"
   },
   "nav": {
     "home": "Home",
@@ -17,31 +18,44 @@
     "badgeClosed": "Salon Closed",
     "badgeCutoff": "Online Queue Closed (Walk-ins Only)",
     "title": "Skip the Wait, Save Your Time",
-    "subtitle": "Join our live digital queue from anywhere, pick your favorite stylist and services, and get notified when your chair is ready.",
+    "subtitle": "Join our live digital virtual queue from anywhere, pick your favorite stylist and services, and get notified when your chair is ready.",
     "joinBtn": "Join Live Queue",
     "trackBtn": "Track Existing Token",
+    "trackPlaceholder": "Enter 10-digit phone or token",
     "waitingCount": "Currently Waiting",
     "workingBarbers": "Stylists on Duty",
     "estWait": "Avg Wait Time",
     "mins": "mins",
-    "customers": "customers"
+    "customers": "customers",
+    "ourServices": "Featured Salon Services",
+    "ourStylists": "Our Master Stylists Today",
+    "viewAll": "View All"
   },
   "join": {
     "title": "Join Virtual Queue",
-    "subtitle": "Please provide your details, choose up to 3 services, and pick your preferred barber.",
+    "subtitle": "Enter your contact info, select up to 3 services, and pick your preferred stylist.",
     "nameLabel": "Your Full Name",
-    "namePlaceholder": "Enter your name",
+    "namePlaceholder": "e.g. Rahul Sharma",
+    "nameError": "Name must be between 2 and 50 characters.",
     "phoneLabel": "Mobile Number (10 Digits)",
     "phonePlaceholder": "e.g. 9876543210",
+    "phoneError": "Please enter a valid 10-digit Indian mobile number.",
     "servicesTitle": "Select Services (Max 3)",
-    "servicesMaxNotice": "Maximum 3 services can be selected.",
+    "servicesMaxNotice": "Maximum 3 services can be selected per session.",
+    "servicesMinError": "Please select at least 1 service to proceed.",
     "barberTitle": "Select Stylist / Barber",
-    "anyBarber": "Any Available Barber (Fastest)",
-    "onBreak": "Currently on Break",
-    "summaryTitle": "Queue Summary",
+    "anyBarber": "Any Available Barber (Fastest Turnaround)",
+    "available": "Available",
+    "onBreak": "On Break",
+    "breakWarning": "Notice: This stylist is currently on break. Your wait time may be longer.",
+    "summaryTitle": "Live Queue Summary",
+    "selectedServices": "Selected Services",
     "totalDuration": "Estimated Duration",
     "totalPrice": "Estimated Price",
-    "confirmBtn": "Confirm & Get Queue Token"
+    "preferredStylist": "Stylist",
+    "confirmBtn": "Confirm & Get Queue Token",
+    "submitting": "Reserving your spot...",
+    "closedNotice": "Online queue joining is currently closed for today. Please visit the reception for walk-in availability."
   },
   "status": {
     "title": "Live Queue Tracker",
@@ -99,6 +113,7 @@
     "currency": "₹",
     "back": "Back",
     "confirm": "Confirm",
-    "close": "Close"
+    "close": "Close",
+    "retry": "Retry"
   }
 }

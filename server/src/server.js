@@ -4,6 +4,10 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import { connectDB } from './config/db.js';
 import { initSocket } from './config/socket.js';
+import { seedInitialData } from './services/queueService.js';
+import queueRoutes from './routes/queueRoutes.js';
+import serviceRoutes from './routes/serviceRoutes.js';
+import barberRoutes from './routes/barberRoutes.js';
 
 dotenv.config();
 
@@ -34,22 +38,10 @@ app.get('/api/health', (req, res) => {
   });
 });
 
-// Seed/Placeholder route for live queue check
-app.get('/api/v1/queue/live', (req, res) => {
-  res.json({
-    success: true,
-    data: {
-      waiting: [],
-      called: [],
-      inChair: [],
-      stats: {
-        totalWaiting: 0,
-        workingBarbers: 3,
-        estimatedWaitMinutes: 0,
-      },
-    },
-  });
-});
+// Mount REST API Routers
+app.use('/api/v1/queue', queueRoutes);
+app.use('/api/v1/services', serviceRoutes);
+app.use('/api/v1/barbers', barberRoutes);
 
 // Central error handler
 app.use((err, req, res, next) => {
@@ -68,8 +60,11 @@ server.listen(PORT, () => {
   console.log(` Health check: http://localhost:${PORT}/api/health`);
   console.log(`====================================================`);
   
-  // Connect to DB asynchronously
-  connectDB();
+  // Connect to DB and seed
+  connectDB().then(() => {
+    seedInitialData();
+  });
 });
 
 export { app, server, io };
+
