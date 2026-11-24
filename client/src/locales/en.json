@@ -1,0 +1,104 @@
+{
+  "brand": {
+    "name": "Elite Salon",
+    "tagline": "Smart Live Queue Management"
+  },
+  "nav": {
+    "home": "Home",
+    "join": "Join Queue",
+    "status": "My Status",
+    "reception": "Reception",
+    "display": "TV Display",
+    "admin": "Admin",
+    "staffLogin": "Staff Access"
+  },
+  "home": {
+    "badgeOpen": "Salon Open & Accepting Queue",
+    "badgeClosed": "Salon Closed",
+    "badgeCutoff": "Online Queue Closed (Walk-ins Only)",
+    "title": "Skip the Wait, Save Your Time",
+    "subtitle": "Join our live digital queue from anywhere, pick your favorite stylist and services, and get notified when your chair is ready.",
+    "joinBtn": "Join Live Queue",
+    "trackBtn": "Track Existing Token",
+    "waitingCount": "Currently Waiting",
+    "workingBarbers": "Stylists on Duty",
+    "estWait": "Avg Wait Time",
+    "mins": "mins",
+    "customers": "customers"
+  },
+  "join": {
+    "title": "Join Virtual Queue",
+    "subtitle": "Please provide your details, choose up to 3 services, and pick your preferred barber.",
+    "nameLabel": "Your Full Name",
+    "namePlaceholder": "Enter your name",
+    "phoneLabel": "Mobile Number (10 Digits)",
+    "phonePlaceholder": "e.g. 9876543210",
+    "servicesTitle": "Select Services (Max 3)",
+    "servicesMaxNotice": "Maximum 3 services can be selected.",
+    "barberTitle": "Select Stylist / Barber",
+    "anyBarber": "Any Available Barber (Fastest)",
+    "onBreak": "Currently on Break",
+    "summaryTitle": "Queue Summary",
+    "totalDuration": "Estimated Duration",
+    "totalPrice": "Estimated Price",
+    "confirmBtn": "Confirm & Get Queue Token"
+  },
+  "status": {
+    "title": "Live Queue Tracker",
+    "tokenLabel": "Your Token Number",
+    "positionLabel": "Position in Line",
+    "waitLabel": "Estimated Waiting Time",
+    "stateWaiting": "Waiting in Line",
+    "stateCalled": "It's Your Turn! Please Proceed",
+    "stateInChair": "Service in Progress",
+    "stateDone": "Service Completed",
+    "stateCancelled": "Queue Entry Cancelled",
+    "stateNoShow": "Marked as No-Show",
+    "cancelBtn": "Cancel My Queue Spot",
+    "nextAlert": "You are next! Please head to the salon entrance.",
+    "calledAlert": "Please proceed to your assigned chair now!"
+  },
+  "reception": {
+    "title": "Reception Dashboard",
+    "walkInTitle": "Quick Walk-in Intake",
+    "waitingTab": "Waiting Queue",
+    "calledTab": "Paging / Called",
+    "chairTab": "In Chair Stations",
+    "callNextBtn": "Call Next",
+    "markNoShowBtn": "No-Show",
+    "markDoneBtn": "Mark Done",
+    "delayAlert": "DELAY > 60m"
+  },
+  "barber": {
+    "title": "Barber Station",
+    "available": "Available",
+    "onBreak": "On Break",
+    "callNext": "Call Next Customer",
+    "startService": "Start Service (Customer Seated)",
+    "completeService": "Complete Service (Done)",
+    "noActive": "No customer currently in chair."
+  },
+  "display": {
+    "title": "Waiting Area Display",
+    "nowServing": "Now Serving at Stations",
+    "upcoming": "Upcoming in Queue",
+    "chair": "Station",
+    "stylist": "Stylist",
+    "token": "Token"
+  },
+  "admin": {
+    "title": "Salon Administration",
+    "servicesTab": "Services Catalog",
+    "barbersTab": "Barber Roster",
+    "operationsTab": "Salon Operations",
+    "analyticsTab": "Daily Analytics"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "currency": "₹",
+    "back": "Back",
+    "confirm": "Confirm",
+    "close": "Close"
+  }
+}
