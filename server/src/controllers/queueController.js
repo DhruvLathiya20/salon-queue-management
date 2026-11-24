@@ -3,6 +3,10 @@ import {
   getLiveQueueStats,
   checkSalonOpenStatus,
   getQueueTicketById,
+  cancelQueueTicket,
+  callQueueTicket,
+  startServiceQueueTicket,
+  completeQueueTicket,
 } from '../services/queueService.js';
 
 export const handleJoinQueue = async (req, res, next) => {
@@ -63,6 +67,75 @@ export const handleGetTicketStatus = async (req, res, next) => {
     res.json({
       success: true,
       data: ticket,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const handleCancelTicket = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updated = await cancelQueueTicket(id);
+    res.json({
+      success: true,
+      message: 'Queue ticket cancelled successfully',
+      data: updated,
+    });
+  } catch (error) {
+    if (error.status) {
+      return res.status(error.status).json({
+        success: false,
+        message: error.message,
+      });
+    }
+    next(error);
+  }
+};
+
+export const handleCallTicket = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { barberId } = req.body || {};
+    const updated = await callQueueTicket(id, barberId);
+    res.json({
+      success: true,
+      message: 'Customer called to chair',
+      data: updated,
+    });
+  } catch (error) {
+    if (error.status) {
+      return res.status(error.status).json({
+        success: false,
+        message: error.message,
+      });
+    }
+    next(error);
+  }
+};
+
+export const handleStartTicket = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updated = await startServiceQueueTicket(id);
+    res.json({
+      success: true,
+      message: 'Service started',
+      data: updated,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const handleCompleteTicket = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updated = await completeQueueTicket(id);
+    res.json({
+      success: true,
+      message: 'Service completed',
+      data: updated,
     });
   } catch (error) {
     next(error);
