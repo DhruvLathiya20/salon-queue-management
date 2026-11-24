@@ -21,6 +21,7 @@ const CLIENT_URL = process.env.CLIENT_URL || 'http://localhost:5173';
 // Build allowed origins list (always include localhost for local dev)
 const ALLOWED_ORIGINS = [
   CLIENT_URL,
+  'https://client-tan-seven-31.vercel.app',  // production frontend
   'http://localhost:5173',
   'http://127.0.0.1:5173',
 ].filter(Boolean);

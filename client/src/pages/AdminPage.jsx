@@ -29,7 +29,7 @@ import {
   TrendingUp,
 } from 'lucide-react';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://salon-queue-management-1c2g.onrender.com/api/v1';
 
 // API helpers with admin PIN header
 function adminFetch(path, method = 'GET', body, pin) {
