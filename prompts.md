@@ -338,10 +338,3 @@ https://salon-queue-management-1c2g.onrender.com
 
 ---
 
-### Prompt 14: Documentation of Prompts and Project Reflection
-```markdown
-prompts.md: every prompt you used, in order (including the ones that didn't work)
-
-Half-page reflection: one thing the agent got wrong, how you noticed it, and how you fixed your prompt or doc
-```
-*Result: Created `prompts.md` with complete historical sequence and written reflection.*
