@@ -8,6 +8,7 @@ import { seedInitialData } from './services/queueService.js';
 import queueRoutes from './routes/queueRoutes.js';
 import serviceRoutes from './routes/serviceRoutes.js';
 import barberRoutes from './routes/barberRoutes.js';
+import adminRoutes from './routes/adminRoutes.js';
 
 dotenv.config();
 
@@ -42,6 +43,7 @@ app.get('/api/health', (req, res) => {
 app.use('/api/v1/queue', queueRoutes);
 app.use('/api/v1/services', serviceRoutes);
 app.use('/api/v1/barbers', barberRoutes);
+app.use('/api/v1/admin', adminRoutes);
 
 // Central error handler
 app.use((err, req, res, next) => {

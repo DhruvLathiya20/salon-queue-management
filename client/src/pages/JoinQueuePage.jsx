@@ -151,8 +151,21 @@ export const JoinQueuePage = () => {
 
       const result = await api.joinQueue(payload);
       if (result.success && result.data) {
-        // Successfully joined queue -> Navigate to status tracker
+        // Persist ticket in localStorage so browser refreshes preserve tracking
         const tokenNumber = result.data.tokenNumber || result.data._id;
+        try {
+          localStorage.setItem(
+            'salon_active_ticket',
+            JSON.stringify({
+              id: result.data._id,
+              tokenNumber: result.data.tokenNumber,
+              customerPhone: payload.customerPhone,
+              customerName: payload.customerName,
+            })
+          );
+        } catch (e) {}
+
+        // Navigate to status tracker
         navigate(`/status/${encodeURIComponent(tokenNumber)}`);
       }
     } catch (err) {

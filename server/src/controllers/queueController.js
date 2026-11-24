@@ -7,6 +7,10 @@ import {
   callQueueTicket,
   startServiceQueueTicket,
   completeQueueTicket,
+  getReceptionBoardData,
+  markNoShow,
+  updateSalonSettings,
+  getDisplayScreenData,
 } from '../services/queueService.js';
 
 export const handleJoinQueue = async (req, res, next) => {
@@ -38,6 +42,46 @@ export const handleJoinQueue = async (req, res, next) => {
   }
 };
 
+export const handleWalkIn = async (req, res, next) => {
+  try {
+    const { customerName, customerPhone, serviceIds, preferredBarberId } = req.body;
+    const ticket = await joinQueue({
+      customerName,
+      customerPhone,
+      serviceIds,
+      preferredBarberId,
+      entryType: 'WALK_IN', // Walk-ins bypass online cut-off
+    });
+
+    res.status(201).json({
+      success: true,
+      message: 'Walk-in customer registered successfully',
+      data: ticket,
+    });
+  } catch (error) {
+    if (error.status) {
+      return res.status(error.status).json({
+        success: false,
+        message: error.message,
+        existingTicket: error.existingTicket,
+      });
+    }
+    next(error);
+  }
+};
+
+export const handleGetDisplayData = async (req, res, next) => {
+  try {
+    const data = await getDisplayScreenData();
+    res.json({
+      success: true,
+      data,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 export const handleGetLiveQueue = async (req, res, next) => {
   try {
     const stats = await getLiveQueueStats();
@@ -48,6 +92,18 @@ export const handleGetLiveQueue = async (req, res, next) => {
         stats,
         salonStatus,
       },
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const handleGetReceptionBoard = async (req, res, next) => {
+  try {
+    const snapshot = await getReceptionBoardData();
+    res.json({
+      success: true,
+      data: snapshot,
     });
   } catch (error) {
     next(error);
@@ -120,7 +176,7 @@ export const handleStartTicket = async (req, res, next) => {
     const updated = await startServiceQueueTicket(id);
     res.json({
       success: true,
-      message: 'Service started',
+      message: 'Service started (In Chair)',
       data: updated,
     });
   } catch (error) {
@@ -134,7 +190,34 @@ export const handleCompleteTicket = async (req, res, next) => {
     const updated = await completeQueueTicket(id);
     res.json({
       success: true,
-      message: 'Service completed',
+      message: 'Service marked Done',
+      data: updated,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const handleMarkNoShow = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const updated = await markNoShow(id);
+    res.json({
+      success: true,
+      message: 'Customer marked as No-Show',
+      data: updated,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const handleUpdateSettings = async (req, res, next) => {
+  try {
+    const updated = await updateSalonSettings(req.body);
+    res.json({
+      success: true,
+      message: 'Settings updated successfully',
       data: updated,
     });
   } catch (error) {
